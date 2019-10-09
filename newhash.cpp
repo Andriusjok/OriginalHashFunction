@@ -34,6 +34,15 @@ void Hash(const char* input, unsigned int length, unsigned int* keys)
 		hash2+=(hash2>>5)^(hash2<<9);
 		hash2+=(hash2>>28)^(hash2<<10);
 	}
+	while(hash1 < 0x11111111)
+	{
+		hash1 = hash1 * (hash1 << 1);
+
+	}
+	while (hash2 < 0x11111111)
+	{
+		hash2 = hash2 * (hash1 << 1);
+	}
 	keys[0]=hash1;
 	keys[1]=hash2;
 }
